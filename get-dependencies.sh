@@ -18,6 +18,7 @@ make-aur-package librewolf-bin
 
 mkdir -p ./AppDir/bin
 cp -r /usr/lib/librewolf/* ./AppDir/bin
+ln -sf librewolf ./AppDir/bin/librewolf-bin
 
 # If the application needs to be manually built that has to be done down here
 
