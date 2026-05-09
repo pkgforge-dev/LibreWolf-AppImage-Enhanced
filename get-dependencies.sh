@@ -10,7 +10,7 @@ echo "---------------------------------------------------------------"
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common --prefer-nano
+get-debloated-pkgs --add-common --prefer-nano intel-media-driver-mini ffmpeg-mini
 
 # Comment this out if you need an AUR package
 gpg --fetch-keys https://rpm.librewolf.net/pubkey.gpg
