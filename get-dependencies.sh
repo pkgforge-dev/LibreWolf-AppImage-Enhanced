@@ -13,6 +13,7 @@ echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common --prefer-nano
 
 # Comment this out if you need an AUR package
+gpg --fetch-keys https://rpm.librewolf.net/pubkey.gpg
 make-aur-package librewolf-bin
 
 # If the application needs to be manually built that has to be done down here
