@@ -13,19 +13,24 @@ echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common --prefer-nano intel-media-driver-mini ffmpeg-mini
 
 # Comment this out if you need an AUR package
-gpg --fetch-keys https://rpm.librewolf.net/pubkey.gpg
-make-aur-package librewolf-bin
-
-mkdir -p ./AppDir/bin
-cp -r /usr/lib/librewolf/* ./AppDir/bin
-ln -sf librewolf ./AppDir/bin/librewolf-bin
+#make-aur-package PACKAGENAME
 
 # If the application needs to be manually built that has to be done down here
+echo "Downloading LibreWolf..."
+echo "---------------------------------------------------------------"
+case "$ARCH" in
+	x86_64)  farch=$ARCH;;
+	aarch64) farch=arm64;;
+esac
 
-# if you also have to make nightly releases check for DEVEL_RELEASE = 1
-#
-# if [ "${DEVEL_RELEASE-}" = 1 ]; then
-# 	nightly build steps
-# else
-# 	regular build steps
-# fi
+TARBALL_LINK=$(wget https://codeberg.org/api/v1/repos/librewolf/bsys6/releases/latest -O - \
+	| sed 's/[()",{} ]/\n/g' | grep -o "https.*/librewolf.*linux-$farch-package.tar.xz$"
+)
+
+wget --retry-connrefused --tries=30 "$TARBALL_LINK" -O ./"${TARBALL_LINK##*/}"
+
+mkdir -p ./AppDir/bin
+tar -xvf ./"${TARBALL_LINK##*/}"
+mv -v ./librewolf/* ./AppDir/bin
+
+echo "$TARBALL_LINK" | awk -F'/' '{print $(NF-1); exit}' > ~/version
