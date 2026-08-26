@@ -7,8 +7,8 @@ export ARCH
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON=/usr/share/icons/hicolor/192x192/apps/librewolf.png
-export DESKTOP=/usr/share/applications/librewolf.desktop
+export ICON=https://librewolf.dev/librewolf/arch/raw/commit/e08543f8f960c76cf576239ab31342ebcb99f186/librewolf/default192x192.png
+export DESKTOP=https://librewolf.dev/librewolf/arch/raw/commit/e08543f8f960c76cf576239ab31342ebcb99f186/librewolf/librewolf.desktop
 export DEPLOY_OPENGL=1
 export DEPLOY_VULKAN=1
 export URUNTIME_PRELOAD=1
