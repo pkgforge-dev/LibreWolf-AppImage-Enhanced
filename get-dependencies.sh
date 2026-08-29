@@ -23,7 +23,7 @@ case "$ARCH" in
 	aarch64) farch=arm64;;
 esac
 
-TARBALL_LINK=$(wget https://codeberg.org/api/v1/repos/librewolf/bsys6/releases/latest -O - \
+TARBALL_LINK=$(wget https://librewolf.dev/api/v1/repos/librewolf/bsys6/releases/latest -O - \
 	| sed 's/[()",{} ]/\n/g' | grep -o "https.*/librewolf.*linux-$farch-package.tar.xz$"
 )
 
