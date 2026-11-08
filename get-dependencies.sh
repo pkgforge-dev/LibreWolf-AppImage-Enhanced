@@ -6,7 +6,7 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm libcanberra
+pacman -Syu --noconfirm libcanberra sndio
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
